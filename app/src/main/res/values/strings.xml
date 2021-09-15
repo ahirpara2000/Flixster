@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Flixster</string>
+    <string name="textview">TextView</string>
+    <string name="movieposter">MoviePoster</string>
 </resources>
