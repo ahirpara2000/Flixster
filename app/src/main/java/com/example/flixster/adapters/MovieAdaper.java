@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -55,6 +56,7 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
         TextView tvOverview;
         ImageView ivPoster;
         TextView tvRating;
+        RatingBar rating;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -62,12 +64,15 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
             tvRating = itemView.findViewById(R.id.tvRating);
+            rating = itemView.findViewById(R.id.rating);
         }
 
         public void bind(Movie movie) {
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
-            tvRating.setText(movie.getVote_average() + "/10");
+
+            tvRating.setText(String.format("%.1f", movie.getVote_average()));
+            rating.setRating(movie.getVote_average());
             String imageUrl;
 
             // if phone is in landscape

@@ -49,7 +49,8 @@ public class Movie {
         return overview;
     }
 
-    public String getVote_average() {
-        return vote_average;
+    public float getVote_average() {
+        float rating = Float.parseFloat(vote_average) / 2;
+        return rating;
     }
 }
