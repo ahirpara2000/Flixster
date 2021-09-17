@@ -54,17 +54,20 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
+        TextView tvRating;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
+            tvRating = itemView.findViewById(R.id.tvRating);
         }
 
         public void bind(Movie movie) {
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
+            tvRating.setText(movie.getVote_average() + "/10");
             String imageUrl;
 
             // if phone is in landscape
