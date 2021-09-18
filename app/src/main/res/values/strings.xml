@@ -2,4 +2,6 @@
     <string name="app_name">Flixster</string>
     <string name="textview">TextView</string>
     <string name="movieposter">MoviePoster</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="day_mode">Day Mode</string>
 </resources>

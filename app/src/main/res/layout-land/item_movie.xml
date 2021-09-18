@@ -62,12 +62,13 @@
 
                 <RatingBar
                     android:id="@+id/rating"
+                    style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="?android:attr/ratingBarStyleSmall"
+                    android:isIndicator="true"
                     android:numStars="5"
-                    android:stepSize="0.1"
-                    android:isIndicator="true" />
+                    android:rating="4"
+                    android:stepSize="0.1" />
 
                 <TextView
                     android:id="@+id/tvRating"
@@ -75,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunito"
                     android:padding="5dp"
-                    android:text="4.8/10"
+                    android:text="4"
                     android:textSize="12sp" />
             </LinearLayout>
 

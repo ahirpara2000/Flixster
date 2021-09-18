@@ -1,11 +1,15 @@
 package com.example.flixster;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
@@ -27,6 +31,37 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
 
     List<Movie> movies;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+
+        int nightMode = AppCompatDelegate.getDefaultNightMode();
+        if(nightMode == AppCompatDelegate.MODE_NIGHT_YES){
+            menu.findItem(R.id.night_mode).setTitle("Light Mode");
+        } else{
+            menu.findItem(R.id.night_mode).setTitle("Dark Mode");
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //Check if the correct item was clicked
+        if(item.getItemId()==R.id.night_mode) {
+            // Get the night mode state of the app.
+            int nightMode = AppCompatDelegate.getDefaultNightMode();
+            //Set the theme mode for the restarted activity
+            if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
+            // Recreate the activity for the theme change to take effect.
+            recreate();
+        }
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
