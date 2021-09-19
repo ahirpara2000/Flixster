@@ -1,7 +1,9 @@
 package com.example.flixster.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,7 +53,7 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
         return movies.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tvTitle;
         TextView tvOverview;
@@ -60,6 +63,8 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
+
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
@@ -93,5 +98,26 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
                     .error(R.drawable.placeholder)
                     .into(ivPoster);
         }
+
+        @Override
+        public void onClick(View v) {
+            int position = this.getAdapterPosition();
+            Movie movie = movies.get(position);
+
+            String title = movie.getTitle();
+            String overView = movie.getOverview();
+            String backDropUrl = movie.getBackdropPath();
+            String posterUrl = movie.getPosterPath();
+            float ratings = movie.getVote_average();
+
+            Intent intent = new Intent(context, DetailPage.class);
+            intent.putExtra("Title", title);
+            intent.putExtra("OverView", overView);
+            intent.putExtra("backDropUrl", backDropUrl);
+            intent.putExtra("posterUrl", posterUrl);
+            intent.putExtra("ratings", ratings);
+            context.startActivity(intent);
+        }
+
     }
 }
