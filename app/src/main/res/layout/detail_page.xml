@@ -47,7 +47,7 @@
         android:id="@+id/card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="15dp"
         android:layout_marginTop="170dp"
         android:layout_marginBottom="-5dp"
         app:cardBackgroundColor="@color/cardBg"
@@ -60,37 +60,47 @@
 
             <LinearLayout
                 android:id="@+id/right_container"
-                android:layout_width="185dp"
+                android:layout_width="200dp"
                 android:layout_height="165dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="0dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="0dp"
+                android:gravity="center"
                 android:orientation="vertical"
                 tools:layout_alignParentTop="true">
 
                 <TextView
                     android:id="@+id/movieTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="104dp"
-                    android:layout_alignParentStart="false"
-                    android:layout_alignParentTop="false"
-                    android:layout_centerHorizontal="false"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
+                    android:ellipsize="end"
                     android:fontFamily="@font/nunito_bold"
                     android:gravity="center_vertical"
+                    android:maxLines="2"
                     android:padding="5dp"
                     android:text="Jurrasic Hunt"
                     android:textColor="@color/titleTextColor"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/runTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:padding="5dp"
+                    android:text="1h 23m"
+                    android:textSize="10sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <RatingBar
                         android:id="@+id/ratingBar"
@@ -115,6 +125,15 @@
                         android:paddingStart="10dp"
                         android:text="4" />
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/genre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:padding="5dp"
+                    android:text="Action | Science Fiction | Thriller"
+                    android:textSize="10sp" />
 
             </LinearLayout>
 

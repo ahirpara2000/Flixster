@@ -21,6 +21,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
+            android:contentDescription="@string/movie_backdrop"
             android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
     </com.bosphere.fadingedgelayout.FadingEdgeLayout>
@@ -30,128 +31,142 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content">
 
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="170dp"
+                android:layout_marginBottom="-5dp"
+                app:cardBackgroundColor="@color/cardBg"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="3dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card"
+                <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="170dp"
-                    android:layout_marginBottom="-5dp"
-                    app:cardBackgroundColor="@color/cardBg"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="3dp">
+                    android:layout_height="wrap_content">
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/right_container"
+                        android:layout_width="490dp"
+                        android:layout_height="165dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        tools:layout_alignParentTop="true">
+
+                        <TextView
+                            android:id="@+id/movieTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/nunito_bold"
+                            android:gravity="center_vertical"
+                            android:maxLines="2"
+                            android:padding="5dp"
+                            android:text="Jurrasic Hunt"
+                            android:textColor="@color/titleTextColor"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/runTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito"
+                            android:padding="5dp"
+                            android:text="1h 23m"
+                            android:textSize="10sp" />
 
                         <LinearLayout
-                            android:id="@+id/right_container"
-                            android:layout_width="490dp"
-                            android:layout_height="125dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginStart="0dp"
-                            android:layout_marginEnd="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:orientation="vertical"
-                            tools:layout_alignParentTop="true">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                            <RatingBar
+                                android:id="@+id/ratingBar"
+                                style="?android:attr/ratingBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="false"
+                                android:layout_alignParentEnd="false"
+                                android:isIndicator="true"
+                                android:numStars="5"
+                                android:rating="4"
+                                android:stepSize="0.1" />
 
                             <TextView
-                                android:id="@+id/movieTitle"
+                                android:id="@+id/movieRating"
                                 android:layout_width="match_parent"
-                                android:layout_height="87dp"
-                                android:layout_alignParentStart="false"
-                                android:layout_alignParentTop="false"
-                                android:layout_centerHorizontal="false"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="0dp"
                                 android:layout_marginTop="0dp"
-                                android:fontFamily="@font/nunito_bold"
+                                android:layout_marginEnd="0dp"
                                 android:gravity="center_vertical"
-                                android:padding="5dp"
-                                android:text="Jurrasic Hunt"
-                                android:textColor="@color/titleTextColor"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center"
-                                android:orientation="horizontal">
-
-                                <RatingBar
-                                    android:id="@+id/ratingBar"
-                                    style="?android:attr/ratingBarStyleSmall"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentTop="false"
-                                    android:layout_alignParentEnd="false"
-                                    android:isIndicator="true"
-                                    android:numStars="5"
-                                    android:rating="4"
-                                    android:stepSize="0.1" />
-
-                                <TextView
-                                    android:id="@+id/movieRating"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginStart="0dp"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_marginEnd="0dp"
-                                    android:gravity="center_vertical"
-                                    android:padding="5dp"
-                                    android:text="4" />
-                            </LinearLayout>
-
+                                android:paddingStart="10dp"
+                                android:text="4" />
                         </LinearLayout>
 
                         <TextView
-                            android:id="@+id/movieOverview"
+                            android:id="@+id/genre"
                             android:layout_width="match_parent"
-                            android:layout_height="193dp"
-                            android:layout_below="@+id/right_container"
-                            android:layout_alignParentEnd="false"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginTop="30dp"
-                            android:layout_marginEnd="0dp"
-                            android:layout_marginBottom="0dp"
+                            android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito"
-                            android:lineSpacingExtra="8sp"
-                            android:padding="20dp"
-                            android:text="Female adventurer Parker joins a crew of male trophy hunters in a remote wilderness park. Their goal: slaughter genetically recreated dinosaurs for sport using rifles, arrows, and grenades. After their guide is killed by raptors, the team tries to escape the park – but the hunters quickly become the hunted. Even worse, the park’s manager suspects Parker of being a spy and sends a hit squad after her. This battle’s about to become primitive!"
-                            android:textColor="@color/titleTextColor" />
+                            android:padding="5dp"
+                            android:text="Action | Science Fiction | Thriller"
+                            android:textSize="10sp" />
 
-                    </RelativeLayout>
+                    </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/movieOverview"
+                        android:layout_width="match_parent"
+                        android:layout_height="193dp"
+                        android:layout_below="@+id/right_container"
+                        android:layout_alignParentEnd="false"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:fontFamily="@font/nunito"
+                        android:lineSpacingExtra="8sp"
+                        android:padding="20dp"
+                        android:text="@string/MovieOverview"
+                        android:textColor="@color/titleTextColor" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/left_container"
-                    android:layout_width="140dp"
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/left_container"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/card"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="125dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
+
+                <ImageView
+                    android:id="@+id/moviePoster"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/card"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="125dp"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="5dp">
-
-                    <ImageView
-                        android:id="@+id/moviePoster"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:srcCompat="@tools:sample/avatars" />
-                </androidx.cardview.widget.CardView>
-            </RelativeLayout>
-        </LinearLayout>
+                    android:contentDescription="@string/movie_poster"
+                    tools:srcCompat="@tools:sample/avatars" />
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
     </ScrollView>
 
 

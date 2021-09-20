@@ -108,6 +108,7 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
             String overView = movie.getOverview();
             String backDropUrl = movie.getBackdropPath();
             String posterUrl = movie.getPosterPath();
+            String movie_id = movie.getMovie_id();
             float ratings = movie.getVote_average();
 
             Intent intent = new Intent(context, DetailPage.class);
@@ -116,6 +117,7 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
             intent.putExtra("backDropUrl", backDropUrl);
             intent.putExtra("posterUrl", posterUrl);
             intent.putExtra("ratings", ratings);
+            intent.putExtra("Movie_id", movie_id);
             context.startActivity(intent);
         }
 

@@ -4,4 +4,7 @@
     <string name="movieposter">MoviePoster</string>
     <string name="night_mode">Night Mode</string>
     <string name="day_mode">Day Mode</string>
+    <string name="movie_backdrop">movie backdrop</string>
+    <string name="movie_poster">Movie poster</string>
+    <string name="MovieOverview">Female adventurer Parker joins a crew of male trophy hunters in a remote wilderness park. Their goal: slaughter genetically recreated dinosaurs for sport using rifles, arrows, and grenades. After their guide is killed by raptors, the team tries to escape the park – but the hunters quickly become the hunted. Even worse, the park’s manager suspects Parker of being a spy and sends a hit squad after her. This battle’s about to become primitive!</string>
 </resources>

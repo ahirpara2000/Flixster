@@ -37,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu, menu);
 
         int nightMode = AppCompatDelegate.getDefaultNightMode();
-        if(nightMode == AppCompatDelegate.MODE_NIGHT_YES){
-            menu.findItem(R.id.night_mode).setTitle("Light Mode");
-        } else{
+        if(nightMode == AppCompatDelegate.MODE_NIGHT_NO){
             menu.findItem(R.id.night_mode).setTitle("Dark Mode");
+        } else{
+            menu.findItem(R.id.night_mode).setTitle("Light Mode");
         }
         return true;
     }
@@ -52,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
             // Get the night mode state of the app.
             int nightMode = AppCompatDelegate.getDefaultNightMode();
             //Set the theme mode for the restarted activity
-            if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            } else {
+            if (nightMode == AppCompatDelegate.MODE_NIGHT_NO) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
             // Recreate the activity for the theme change to take effect.
             recreate();

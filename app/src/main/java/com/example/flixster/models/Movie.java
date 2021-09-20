@@ -16,6 +16,7 @@ public class Movie {
     String title;
     String overview;
     String vote_average;
+    String movie_id;
 
     public Movie(JSONObject jsonObject) throws JSONException {
         backdropPath = jsonObject.getString("backdrop_path");
@@ -23,6 +24,7 @@ public class Movie {
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
         vote_average = jsonObject.getString("vote_average");
+        movie_id = jsonObject.getString("id");
     }
 
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
@@ -49,8 +51,18 @@ public class Movie {
         return overview;
     }
 
+    public String getMovie_id() { return movie_id; }
+
     public float getVote_average() {
         float rating = Float.parseFloat(vote_average) / 2;
         return rating;
+    }
+
+    public static List<String> getGenreList(JSONArray genre) throws JSONException {
+        List<String> genres = new ArrayList<>();
+        for(int i = 0; i < genre.length(); i++) {
+            genres.add(genre.getJSONObject(i).getString("name"));
+        }
+        return genres;
     }
 }
