@@ -1,5 +1,6 @@
 package com.example.flixster.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -12,11 +13,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.flixster.MainActivity;
 import com.example.flixster.R;
 import com.example.flixster.models.DetailPage;
 import com.example.flixster.models.Movie;
@@ -107,7 +111,16 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
                 public void onClick(View v) {
                     Intent intent = new Intent(context, DetailPage.class);
                     intent.putExtra("movie", Parcels.wrap(movie));
-                    context.startActivity(intent);
+
+                    Pair<View, String> p1 = Pair.create((View)tvTitle, "title");
+                    Pair<View, String> p2 = Pair.create((View)tvOverview, "overview");
+                    Pair<View, String> p3 = Pair.create((View)rating, "rating");
+                    Pair<View, String> p4 = Pair.create((View)ivPoster, "poster");
+
+                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation((Activity)context, p1, p2, p3, p4);
+
+                    context.startActivity(intent, options.toBundle());
                 }
             });
         }

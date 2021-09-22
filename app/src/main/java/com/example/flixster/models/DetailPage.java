@@ -17,7 +17,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.flixster.R;
-import com.example.flixster.models.Movie;
 
 import org.json.JSONException;
 import org.json.JSONObject;
