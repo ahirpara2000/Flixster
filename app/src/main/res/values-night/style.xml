@@ -5,6 +5,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorSecondary">@color/white</item>
         <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="roundedImageView" parent="">

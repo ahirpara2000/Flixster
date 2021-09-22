@@ -25,23 +25,17 @@
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
     </com.bosphere.fadingedgelayout.FadingEdgeLayout>
 
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/left_container"
-        android:layout_width="135dp"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/moviePoster"
+        android:layout_width="120dp"
+        android:layout_height="200dp"
         android:layout_alignStart="@+id/card"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="125dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="5dp">
-
-        <ImageView
-            android:id="@+id/moviePoster"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars" />
-    </androidx.cardview.widget.CardView>
+        android:layout_alignTop="@+id/card"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="-50dp"
+        android:transitionName="portrait"
+        android:elevation="10dp"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
@@ -84,7 +78,8 @@
                     android:text="Jurrasic Hunt"
                     android:textColor="@color/titleTextColor"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:transitionName="title" />
 
                 <TextView
                     android:id="@+id/runTime"
@@ -100,7 +95,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:padding="5dp">
+                    android:padding="5dp"
+                    android:transitionName="rating" >
 
                     <RatingBar
                         android:id="@+id/ratingBar"
@@ -149,9 +145,11 @@
                 android:layout_marginBottom="0dp"
                 android:fontFamily="@font/nunito"
                 android:lineSpacingExtra="8sp"
-                android:padding="20dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:text="Female adventurer Parker joins a crew of male trophy hunters in a remote wilderness park. Their goal: slaughter genetically recreated dinosaurs for sport using rifles, arrows, and grenades. After their guide is killed by raptors, the team tries to escape the park – but the hunters quickly become the hunted. Even worse, the park’s manager suspects Parker of being a spy and sends a hit squad after her. This battle’s about to become primitive!"
-                android:textColor="@color/titleTextColor" />
+                android:textColor="@color/titleTextColor"
+                android:transitionName="overview" />
 
         </RelativeLayout>
 

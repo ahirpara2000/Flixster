@@ -41,7 +41,8 @@
                 android:textColor="@color/titleTextColor"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                tools:text="Jurassic Hunt" />
+                tools:text="Jurassic Hunt"
+                android:transitionName="title" />
 
             <TextView
                 android:id="@+id/tvOverview"
@@ -54,13 +55,15 @@
                 android:padding="5dp"
                 android:textColor="@color/titleTextColor"
                 android:textSize="12sp"
+                android:transitionName="overview"
                 tools:text="Female adventurer Parker joins a crew of male trophy hunters in a remote wilderness park. Their goal: slaughter genetically recreated dinosaurs for sport using rifles, arrows, and grenades. After their guide is killed by raptors, the team tries to escape the park – but the hunters quickly become the hunted. Even worse, the park’s manager suspects Parker of being a spy and sends a hit squad after her. This battle’s about to become primitive!" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:transitionName="rating">
 
                 <RatingBar
                     android:id="@+id/rating"
@@ -85,29 +88,17 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
+    <ImageView
+        android:id="@+id/ivPoster"
         android:layout_width="265dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="15dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomCard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/bottomCard">
-
-        <ImageView
-            android:id="@+id/ivPoster"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:contentDescription="@string/movieposter"
-            android:visibility="visible"
-            tools:srcCompat="@tools:sample/avatars" />
-    </androidx.cardview.widget.CardView>
+        android:layout_height="180dp"
+        android:layout_alignStart="@+id/bottomCard"
+        android:layout_alignTop="@+id/bottomCard"
+        android:layout_marginStart="-70dp"
+        android:layout_marginTop="-30dp"
+        android:contentDescription="@string/movieposter"
+        android:elevation="10dp"
+        android:visibility="visible"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </RelativeLayout>

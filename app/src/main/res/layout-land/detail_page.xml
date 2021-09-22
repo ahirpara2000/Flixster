@@ -55,7 +55,6 @@
                         android:layout_width="490dp"
                         android:layout_height="165dp"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginStart="0dp"
                         android:layout_marginEnd="0dp"
                         android:layout_marginBottom="0dp"
                         android:gravity="center"
@@ -76,7 +75,8 @@
                             android:text="Jurrasic Hunt"
                             android:textColor="@color/titleTextColor"
                             android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:transitionName="title" />
 
                         <TextView
                             android:id="@+id/runTime"
@@ -92,7 +92,8 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:orientation="horizontal"
-                            android:padding="5dp">
+                            android:padding="5dp"
+                            android:transitionName="rating">
 
                             <RatingBar
                                 android:id="@+id/ratingBar"
@@ -143,29 +144,25 @@
                         android:lineSpacingExtra="8sp"
                         android:padding="20dp"
                         android:text="@string/MovieOverview"
-                        android:textColor="@color/titleTextColor" />
+                        android:textColor="@color/titleTextColor"
+                        android:transitionName="overview"/>
 
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/left_container"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/moviePoster"
+                android:layout_width="120dp"
+                android:layout_height="200dp"
                 android:layout_alignStart="@+id/card"
+                android:layout_alignTop="@+id/card"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="125dp"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp">
-
-                <ImageView
-                    android:id="@+id/moviePoster"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/movie_poster"
-                    tools:srcCompat="@tools:sample/avatars" />
-            </androidx.cardview.widget.CardView>
+                android:layout_marginTop="-30dp"
+                android:contentDescription="@string/movie_poster"
+                android:transitionName="portrait"
+                android:elevation="10dp"
+                tools:srcCompat="@tools:sample/avatars" />
         </RelativeLayout>
     </ScrollView>
 

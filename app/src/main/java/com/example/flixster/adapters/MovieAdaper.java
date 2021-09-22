@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.flixster.R;
 import com.example.flixster.models.DetailPage;
 import com.example.flixster.models.Movie;
@@ -95,6 +97,7 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
 
             Glide.with(context)
                     .load(imageUrl)
+                    .apply(RequestOptions.bitmapTransform(new RoundedCorners(14)))
                     .placeholder(R.drawable.placeholder)
                     .error(R.drawable.placeholder)
                     .into(ivPoster);
