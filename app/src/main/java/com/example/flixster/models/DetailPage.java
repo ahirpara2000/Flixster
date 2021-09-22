@@ -1,4 +1,4 @@
-package com.example.flixster.adapters;
+package com.example.flixster.models;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +19,7 @@ import com.example.flixster.models.Movie;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -26,6 +27,14 @@ import okhttp3.Headers;
 
 public class DetailPage extends AppCompatActivity {
 
+    TextView movieTitle;
+    TextView movieOverview;
+    TextView rating;
+    TextView genre;
+    TextView runTime;
+    RatingBar ratingBar;
+    ImageView backDrop;
+    ImageView poster;
 
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -34,21 +43,17 @@ public class DetailPage extends AppCompatActivity {
         setContentView(R.layout.detail_page);
 
         Intent intent = getIntent();
+        Movie movie = Parcels.unwrap(intent.getParcelableExtra("movie"));
         String movieId = intent.getStringExtra("Movie_id");
-        String title = intent.getStringExtra("Title");
-        String overView = intent.getStringExtra("OverView");
-        String backDropUrl = intent.getStringExtra("backDropUrl");
-        String posterUrl = intent.getStringExtra("posterUrl");
-        float ratings = intent.getFloatExtra("ratings", 0.0f);
 
-        TextView movieTitle = findViewById(R.id.movieTitle);
-        TextView movieOverview = findViewById(R.id.movieOverview);
-        TextView rating = findViewById(R.id.movieRating);
-        TextView genre = findViewById(R.id.genre);
-        TextView runTime = findViewById(R.id.runTime);
-        RatingBar ratingBar = findViewById(R.id.ratingBar);
-        ImageView backDrop = findViewById(R.id.movieBackdrop);
-        ImageView poster = findViewById(R.id.moviePoster);
+        movieTitle = findViewById(R.id.movieTitle);
+        movieOverview = findViewById(R.id.movieOverview);
+        rating = findViewById(R.id.movieRating);
+        genre = findViewById(R.id.genre);
+        runTime = findViewById(R.id.runTime);
+        ratingBar = findViewById(R.id.ratingBar);
+        backDrop = findViewById(R.id.movieBackdrop);
+        poster = findViewById(R.id.moviePoster);
 
 
         String details_url = "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
@@ -78,17 +83,17 @@ public class DetailPage extends AppCompatActivity {
             }
         });
 
-        movieTitle.setText(title);
-        movieOverview.setText(overView);
-        rating.setText(String.format("%.1f", ratings));
-        ratingBar.setRating(ratings);
+        movieTitle.setText(movie.getTitle());
+        movieOverview.setText(movie.getOverview());
+        rating.setText(String.format("%.1f", movie.getVote_average()));
+        ratingBar.setRating(movie.getVote_average());
         Glide.with(this)
-                .load(backDropUrl)
+                .load(movie.getBackdropPath())
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.placeholder)
                 .into(backDrop);
         Glide.with(this)
-                .load(posterUrl)
+                .load(movie.getPosterPath())
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.placeholder)
                 .into(poster);

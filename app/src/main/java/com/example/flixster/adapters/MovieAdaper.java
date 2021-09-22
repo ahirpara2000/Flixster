@@ -3,24 +3,24 @@ package com.example.flixster.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.flixster.R;
+import com.example.flixster.models.DetailPage;
 import com.example.flixster.models.Movie;
 
 import org.jetbrains.annotations.NotNull;
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -53,23 +53,24 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
         return movies.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
         TextView tvRating;
         RatingBar rating;
+        RelativeLayout container;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
 
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
             tvRating = itemView.findViewById(R.id.tvRating);
             rating = itemView.findViewById(R.id.rating);
+            container = itemView.findViewById(R.id.container);
         }
 
         public void bind(Movie movie) {
@@ -97,28 +98,15 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
                     .placeholder(R.drawable.placeholder)
                     .error(R.drawable.placeholder)
                     .into(ivPoster);
-        }
 
-        @Override
-        public void onClick(View v) {
-            int position = this.getAdapterPosition();
-            Movie movie = movies.get(position);
-
-            String title = movie.getTitle();
-            String overView = movie.getOverview();
-            String backDropUrl = movie.getBackdropPath();
-            String posterUrl = movie.getPosterPath();
-            String movie_id = movie.getMovie_id();
-            float ratings = movie.getVote_average();
-
-            Intent intent = new Intent(context, DetailPage.class);
-            intent.putExtra("Title", title);
-            intent.putExtra("OverView", overView);
-            intent.putExtra("backDropUrl", backDropUrl);
-            intent.putExtra("posterUrl", posterUrl);
-            intent.putExtra("ratings", ratings);
-            intent.putExtra("Movie_id", movie_id);
-            context.startActivity(intent);
+            container.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, DetailPage.class);
+                    intent.putExtra("movie", Parcels.wrap(movie));
+                    context.startActivity(intent);
+                }
+            });
         }
 
     }
