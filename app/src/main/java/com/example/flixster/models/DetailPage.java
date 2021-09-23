@@ -4,18 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.example.flixster.MainActivity;
 import com.example.flixster.R;
 
 import org.json.JSONException;
@@ -99,6 +102,18 @@ public class DetailPage extends AppCompatActivity {
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.placeholder)
                 .into(poster);
+
+        backDrop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Detail Page", "Clicked");
+                Intent intent = new Intent(DetailPage.this, VideoActivity.class);
+                intent.putExtra("poster", movie.getBackdropPath());
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(DetailPage.this, (View)backDrop, "backdrop");
+                startActivity(intent, options.toBundle());
+            }
+        });
 
     }
 }
