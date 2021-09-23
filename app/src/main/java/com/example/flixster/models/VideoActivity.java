@@ -72,13 +72,12 @@ public class VideoActivity extends YouTubeBaseActivity {
     }
 
     private void initilizeYoutube(String youtubeKey) {
-        youTubePlayerView.initialize("YOUR API KEY",
+        youTubePlayerView.initialize(YOUTUBE_API_KEY,
                 new YouTubePlayer.OnInitializedListener() {
                     @Override
                     public void onInitializationSuccess(YouTubePlayer.Provider provider,
                                                         YouTubePlayer youTubePlayer, boolean b) {
 
-                        // do any work here to cue video, play video, etc.
                         youTubePlayer.loadVideo(youtubeKey);
                     }
                     @Override

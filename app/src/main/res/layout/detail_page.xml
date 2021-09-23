@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:fel_edge="bottom"
-        app:fel_size_bottom="140dp">
+        app:fel_size_bottom="140dp"
+        android:elevation="-1dp">
 
         <ImageView
             android:id="@+id/movieBackdrop"
@@ -24,6 +25,11 @@
             android:scaleType="centerCrop"
             android:transitionName="backdrop"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <ImageView
+            android:id="@+id/playView"
+            android:layout_width="match_parent"
+            android:layout_height="170dp" />
     </com.bosphere.fadingedgelayout.FadingEdgeLayout>
 
     <ImageView
