@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.flixster.MainActivity;
 import com.example.flixster.R;
 import com.example.flixster.models.DetailPage;
 import com.example.flixster.models.Movie;
@@ -67,6 +66,7 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
         TextView tvRating;
         RatingBar rating;
         RelativeLayout container;
+        TextView overlay;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -77,15 +77,23 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
             tvRating = itemView.findViewById(R.id.tvRating);
             rating = itemView.findViewById(R.id.rating);
             container = itemView.findViewById(R.id.container);
+            overlay = itemView.findViewById(R.id.overlay);
         }
 
         public void bind(Movie movie) {
+
+            float votes = movie.getVote_average();
+
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
 
             tvRating.setText(String.format("%.1f", movie.getVote_average()));
-            rating.setRating(movie.getVote_average());
+            rating.setRating(votes);
             String imageUrl;
+
+            if(votes  >= 3) {
+                overlay.setVisibility(View.VISIBLE);
+            }
 
             // if phone is in landscape
             // then imageURL = back drop image
