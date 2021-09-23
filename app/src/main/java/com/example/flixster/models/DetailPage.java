@@ -108,7 +108,7 @@ public class DetailPage extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("Detail Page", "Clicked");
                 Intent intent = new Intent(DetailPage.this, VideoActivity.class);
-                intent.putExtra("poster", movie.getBackdropPath());
+                intent.putExtra("movieId", movie.getMovie_id());
                 ActivityOptionsCompat options = ActivityOptionsCompat.
                         makeSceneTransitionAnimation(DetailPage.this, (View)backDrop, "backdrop");
                 startActivity(intent, options.toBundle());

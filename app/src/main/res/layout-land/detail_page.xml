@@ -23,6 +23,7 @@
             android:layout_marginTop="0dp"
             android:contentDescription="@string/movie_backdrop"
             android:scaleType="centerCrop"
+            android:transitionName="backdrop"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
     </com.bosphere.fadingedgelayout.FadingEdgeLayout>
 
