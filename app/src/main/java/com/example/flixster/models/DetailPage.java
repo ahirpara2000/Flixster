@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -127,15 +129,19 @@ public class DetailPage extends AppCompatActivity {
         playView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DetailPage.this, VideoActivity.class);
-                intent.putExtra("movieId", movie.getMovie_id());
-                intent.putExtra("youtubeKey", youtubeKey);
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation(DetailPage.this, thumbnail, "backdrop");
-                startActivity(intent, options.toBundle());
+                changeActivity(movieId, youtubeKey);
             }
         });
 
+    }
+
+    private void changeActivity(String movieId, String youtubeKey) {
+        Intent intent = new Intent(DetailPage.this, VideoActivity.class);
+        intent.putExtra("movieId", movieId);
+        intent.putExtra("youtubeKey", youtubeKey);
+        ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(DetailPage.this, thumbnail, "backdrop");
+        startActivity(intent, options.toBundle());
     }
 
     private void initializeYoutubeBackDrop(String youtubeKey) {

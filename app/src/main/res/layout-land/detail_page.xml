@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/youtubeThumbnail"
             android:layout_width="match_parent"
-            android:layout_height="256dp"
+            android:layout_height="400dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
@@ -154,19 +154,6 @@
 
             </androidx.cardview.widget.CardView>
 
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="137dp"
-                android:layout_marginEnd="58dp"
-                android:background="@drawable/play_button"
-                app:srcCompat="@drawable/button"
-                android:layout_centerInParent="true"
-                android:elevation="10dp"/>
-
             <ImageView
                 android:id="@+id/playView"
                 android:layout_width="match_parent"
@@ -185,6 +172,26 @@
                 android:transitionName="poster"
                 android:elevation="10dp"
                 tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/card"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/trailer_tag"
+                android:drawableStart="@drawable/ic_baseline_play_arrow_24"
+                android:fontFamily="@font/nunito"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="5dp"
+                android:text=" Trailer"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp" />
 
         </RelativeLayout>
     </ScrollView>
