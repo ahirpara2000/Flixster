@@ -79,7 +79,7 @@ public class VideoActivity extends YouTubeBaseActivity {
                                                         YouTubePlayer youTubePlayer, boolean b) {
 
                         // do any work here to cue video, play video, etc.
-                        youTubePlayer.cueVideo(youtubeKey);
+                        youTubePlayer.loadVideo(youtubeKey);
                     }
                     @Override
                     public void onInitializationFailure(YouTubePlayer.Provider provider,
