@@ -1,6 +1,7 @@
 package com.example.flixster.models;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -39,6 +40,7 @@ public class DetailPage extends AppCompatActivity {
     RatingBar ratingBar;
     ImageView backDrop;
     ImageView poster;
+    ImageView emptyView;
 
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -58,6 +60,7 @@ public class DetailPage extends AppCompatActivity {
         ratingBar = findViewById(R.id.ratingBar);
         backDrop = findViewById(R.id.movieBackdrop);
         poster = findViewById(R.id.moviePoster);
+        emptyView = findViewById(R.id.emptyView);
 
 
         String details_url = "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
@@ -106,7 +109,6 @@ public class DetailPage extends AppCompatActivity {
         backDrop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Detail Page", "Clicked");
                 Intent intent = new Intent(DetailPage.this, VideoActivity.class);
                 intent.putExtra("movieId", movie.getMovie_id());
                 ActivityOptionsCompat options = ActivityOptionsCompat.
@@ -114,6 +116,21 @@ public class DetailPage extends AppCompatActivity {
                 startActivity(intent, options.toBundle());
             }
         });
+
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            emptyView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("Detail Page", "Clicked");
+                    Intent intent = new Intent(DetailPage.this, VideoActivity.class);
+                    intent.putExtra("movieId", movie.getMovie_id());
+                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation(DetailPage.this, (View)backDrop, "backdrop");
+                    startActivity(intent, options.toBundle());
+                }
+            });
+        }
 
     }
 }

@@ -146,11 +146,17 @@
                         android:padding="20dp"
                         android:text="@string/MovieOverview"
                         android:textColor="@color/titleTextColor"
-                        android:transitionName="overview"/>
+                        android:transitionName="overview" />
 
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/emptyView"
+                android:layout_width="match_parent"
+                android:layout_height="256dp"
+                android:elevation="-1dp"/>
 
             <ImageView
                 android:id="@+id/moviePoster"
@@ -164,6 +170,7 @@
                 android:transitionName="poster"
                 android:elevation="10dp"
                 tools:srcCompat="@tools:sample/avatars" />
+
         </RelativeLayout>
     </ScrollView>
 
