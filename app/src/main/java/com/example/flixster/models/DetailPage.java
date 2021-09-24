@@ -147,6 +147,7 @@ public class DetailPage extends AppCompatActivity {
     private void initializeYoutubeBackDrop(String youtubeKey) {
         Glide.with(this)
                 .load(String.format(YOUTUBE_THUMBNAIL_URL, youtubeKey))
+                .placeholder(R.drawable.placeholder_2)
                 .into(thumbnail);
     }
 }

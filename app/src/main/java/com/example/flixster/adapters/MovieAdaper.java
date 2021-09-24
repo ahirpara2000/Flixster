@@ -109,9 +109,9 @@ public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
 
             Glide.with(context)
                     .load(imageUrl)
-                    .apply(RequestOptions.bitmapTransform(new RoundedCorners(14)))
                     .placeholder(R.drawable.placeholder)
                     .error(R.drawable.placeholder)
+                    .apply(RequestOptions.bitmapTransform(new RoundedCorners(14)))
                     .into(ivPoster);
 
             container.setOnClickListener(new View.OnClickListener() {
