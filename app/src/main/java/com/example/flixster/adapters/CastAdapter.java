@@ -72,6 +72,8 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
                     .load(cast.getProfile_path())
                     .error(R.drawable.placeholder)
                     .placeholder(R.drawable.placeholder)
+                    .centerCrop()
+                    .circleCrop()
                     .into(ivProfile);
             tvName.setText(cast.getName());
             tvCharacter.setText(cast.getCharacter());
