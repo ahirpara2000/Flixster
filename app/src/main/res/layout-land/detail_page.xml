@@ -39,13 +39,13 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/playView"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginBottom="-5dp"
                 app:cardBackgroundColor="@color/cardBg"
-                app:cardCornerRadius="5dp"
-                android:layout_below="@id/playView">
+                app:cardCornerRadius="5dp">
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -139,8 +139,8 @@
                         android:layout_height="193dp"
                         android:layout_below="@+id/right_container"
                         android:layout_alignParentEnd="false"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginTop="30dp"
+                        android:layout_alignParentBottom="false"
+                        android:layout_marginTop="0dp"
                         android:layout_marginEnd="0dp"
                         android:layout_marginBottom="0dp"
                         android:fontFamily="@font/nunito"
@@ -150,15 +150,15 @@
                         android:textColor="@color/titleTextColor"
                         android:transitionName="overview" />
 
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvCast"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/movieOverview" />
+
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
-
-            <ImageView
-                android:id="@+id/playView"
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:layout_alignParentTop="true"/>
 
             <ImageView
                 android:id="@+id/moviePoster"
@@ -192,6 +192,12 @@
                 android:text=" Trailer"
                 android:textColor="@color/colorAccent"
                 android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/playView"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_alignParentTop="true" />
 
         </RelativeLayout>
     </ScrollView>

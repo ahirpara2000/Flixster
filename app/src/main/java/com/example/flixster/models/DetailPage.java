@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -21,12 +23,15 @@ import com.bumptech.glide.request.RequestOptions;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.flixster.R;
+import com.example.flixster.adapters.CastAdapter;
+import com.example.flixster.adapters.MovieAdaper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Headers;
@@ -43,10 +48,14 @@ public class DetailPage extends AppCompatActivity {
     ImageView poster;
     ImageView playView;
     String youtubeKey;
+    RecyclerView rvCast;
+
+    List<Cast> cast;
 
     public static final String VIDEO_URL = "https://api.themoviedb.org/3/movie/%s/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
     public static final String DETAILS_URL = "https://api.themoviedb.org/3/movie/%s?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
     public static final String YOUTUBE_THUMBNAIL_URL = "https://img.youtube.com/vi/%s/maxresdefault.jpg";
+    public static final String CAST_URL = "https://api.themoviedb.org/3/movie/%s/credits?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US";
 
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -68,7 +77,19 @@ public class DetailPage extends AppCompatActivity {
         poster = findViewById(R.id.moviePoster);
         playView = findViewById(R.id.playView);
 
+        rvCast = findViewById(R.id.rvCast);
+        cast = new ArrayList<>();
+
+        CastAdapter castAdapter = new CastAdapter(this, cast);
+
+        rvCast.setAdapter(castAdapter);
+
+        // Set LayoutManager
+        rvCast.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+
         AsyncHttpClient client = new AsyncHttpClient();
+
+        // Get additional movie details: run time and genre
 
         client.get(String.format(DETAILS_URL, movieId), new JsonHttpResponseHandler() {
             @Override
@@ -93,16 +114,38 @@ public class DetailPage extends AppCompatActivity {
             }
         });
 
+        // gets youtube key
+
         client.get(String.format(VIDEO_URL, movieId), new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
-                JSONObject jsonObject = json.jsonObject;
                 try {
 
                     JSONArray results = json.jsonObject.getJSONArray("results");
                     youtubeKey = results.getJSONObject(0).getString("key");
                     initializeYoutubeBackDrop(youtubeKey);
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+                Log.d("Details Page", "OnFailure");
+            }
+        });
+
+        // gets cast list
+
+        client.get(String.format(CAST_URL, movieId), new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Headers headers, JSON json) {
+                try {
+                    JSONArray results = json.jsonObject.getJSONArray("cast");
+                    Log.d("DetailPage", "" + results);
+                    cast.addAll(Cast.fromJsonArray(results));
+                    castAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -71,7 +71,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="170dp"
         android:layout_marginBottom="-5dp"
@@ -165,13 +165,11 @@
             <TextView
                 android:id="@+id/movieOverview"
                 android:layout_width="match_parent"
-                android:layout_height="193dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/right_container"
                 android:layout_alignParentEnd="false"
-                android:layout_alignParentBottom="true"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="0dp"
-                android:layout_marginBottom="0dp"
                 android:fontFamily="@font/nunito"
                 android:lineSpacingExtra="8sp"
                 android:paddingStart="20dp"
@@ -179,6 +177,13 @@
                 android:text="@string/MovieOverview"
                 android:textColor="@color/titleTextColor"
                 android:transitionName="overview" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCast"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/movieOverview"
+                android:orientation="horizontal" />
 
         </RelativeLayout>
 
