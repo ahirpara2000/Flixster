@@ -18,20 +18,29 @@
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/nunito_bold"
+        android:gravity="center"
+        android:maxLines="2"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
         android:text="Name"
         android:textColor="@color/titleTextColor" />
 
     <TextView
         android:id="@+id/tvCharacter"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/nunito"
+        android:gravity="center"
+        android:maxLines="2"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
         android:text="Character"
-        android:textColor="@color/titleTextColor" />
+        android:textColor="@color/titleTextColor"
+        android:textSize="12sp" />
 
 </LinearLayout>

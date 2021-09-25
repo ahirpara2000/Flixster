@@ -167,23 +167,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/right_container"
-                android:layout_alignParentEnd="false"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="0dp"
+                android:ellipsize="end"
                 android:fontFamily="@font/nunito"
-                android:lineSpacingExtra="8sp"
+                android:lineSpacingExtra="5sp"
+                android:maxLines="5"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:text="@string/MovieOverview"
                 android:textColor="@color/titleTextColor"
                 android:transitionName="overview" />
 
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/rvCast"
+                android:layout_marginStart="0dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingStart="20dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="5dp"
+                android:text="Cast"
+                android:textColor="@color/titleTextColor"
+                android:textSize="16sp" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCast"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/movieOverview"
-                android:orientation="horizontal" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:paddingBottom="20dp" />
 
         </RelativeLayout>
 

@@ -70,8 +70,8 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
 
             Glide.with(context)
                     .load(cast.getProfile_path())
-                    .error(R.drawable.placeholder)
-                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.placeholder_round)
+                    .placeholder(R.drawable.placeholder_round)
                     .centerCrop()
                     .circleCrop()
                     .into(ivProfile);
