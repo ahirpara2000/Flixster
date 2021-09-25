@@ -165,14 +165,15 @@
             <TextView
                 android:id="@+id/movieOverview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/textView3"
                 android:layout_below="@+id/right_container"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/nunito"
                 android:lineSpacingExtra="5sp"
-                android:maxLines="5"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:text="@string/MovieOverview"
@@ -201,7 +202,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:orientation="horizontal"
-                android:paddingBottom="20dp" />
+                android:paddingBottom="30dp" />
 
         </RelativeLayout>
 

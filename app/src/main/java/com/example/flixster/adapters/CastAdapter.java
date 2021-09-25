@@ -1,7 +1,6 @@
 package com.example.flixster.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.flixster.R;
 import com.example.flixster.models.Cast;
-import com.example.flixster.models.Movie;
 
 import java.util.List;
 
@@ -65,8 +61,6 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
         }
 
         public void bind(Cast cast) {
-
-            Log.d("CastAdapter: ", "name" + cast.getName());
 
             Glide.with(context)
                     .load(cast.getProfile_path())

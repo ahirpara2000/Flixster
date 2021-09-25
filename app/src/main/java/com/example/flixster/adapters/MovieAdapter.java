@@ -29,12 +29,12 @@ import org.parceler.Parcels;
 
 import java.util.List;
 
-public class MovieAdaper extends  RecyclerView.Adapter<MovieAdaper.ViewHolder> {
+public class MovieAdapter extends  RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
     Context context;
     List<Movie> movies;
 
-    public MovieAdaper(Context context, List<Movie> movies) {
+    public MovieAdapter(Context context, List<Movie> movies) {
         this.context = context;
         this.movies = movies;
     }
